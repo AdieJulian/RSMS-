@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Room Availability</title>
+  <link rel="stylesheet" href="AdminDashboard.css" />
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="school_logo">
+      <img src="/ROOM SCHEDULING IMAGES/granby_logo.png" class="Logo" alt="Granby Colleges Logo">
+    </div>
+
+    <aside class="sidebar">
+      <div class="admin_nav">
+        <ul class="nav">
+          <li><a href="AdminDashboard.html">Dashboard</a></li>
+          <li><a href="AdminRoomPage.html">View Rooms</a></li>
+          <li><a href="AdminRequestPage.html">Room Requests</a></li>
+          <li><a href="AdminSettingsPage.html">Settings</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      <div class="content-text">
+        <h1>Dashboard</h1>
+        <h2>Hello!</h2>
+        <h2 style="color: gold; padding-left: 0;">Admin</h2>
+      </div>
+      
+      <!-- Horizontal Statistics: Vacant Rooms, Occupied Rooms, Room Requests -->
+      <div class="horizontal-stats">
+        <div class="stat-box">
+          <h3>Vacant Rooms</h3>
+          <p id="vacantRooms"></p>
+        </div>
+        <div class="stat-box">
+          <h3>Occupied Rooms</h3>
+          <p id="occupiedRooms"></p>
+        </div>
+        <div class="stat-box">
+          <h3>Room Requests</h3>
+          <p id="roomRequests"></p>
+        </div>
+      </div>
+      
+      <!-- Charts Section -->
+      <div class="charts">
+        <!-- Left Column: Pie Chart (aligned with Vacant Rooms) -->
+        <div class="pie-chart">
+          <canvas id="pieChart" width="250" height="250"></canvas>
+        </div>
+        <!-- Right Column: Two Bar Graphs (aligned below Occupied Rooms & Room Requests) -->
+        <div class="bar-charts">
+          <div class="bar-chart">
+            <canvas id="daysBarChart"></canvas>
+          </div>
+          <div class="bar-chart">
+            <canvas id="timeSlotsBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+  <!-- Include Shared Data Module First -->
+  <script src="data.js"></script>
+  <!-- Then load Dashboard-specific JS -->
+  <script src="AdminDashboard.js"></script>
+</body>
+</html>

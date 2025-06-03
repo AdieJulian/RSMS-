@@ -1,0 +1,442 @@
+/* === GENERAL LAYOUT === */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #5ea4f5;
+}
+.container {
+  max-height: 100vh;
+  display: flex;
+}
+.sidebar {
+  width: 20%;
+  background-color: #002147;
+  background-image: url(/ROOM\ SCHEDULING\ IMAGES/AdminSideBarBG.jpg);
+  background-size: cover;
+  padding: 20px;
+  height: 100vh;
+  color: white;
+}
+.Logo {
+  height: 30vh;
+  width: 35vh;
+  position: absolute;
+  left: 3%;
+  top: 3%;
+}
+.sidebar .nav {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30vh;
+}
+.sidebar .nav a {
+  background-color: #6c757d;
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+.sidebar .nav a:hover {
+  background-color: rgba(58, 232, 255, 0.664);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: #5ea4f5;
+  min-height: 100vh;         
+  box-sizing: border-box;      
+  padding-bottom: 30px;     
+}
+
+.content-text {
+  display: flex;
+  justify-content: left;
+  background-color: #070242;
+  padding: 10px;
+}
+.content h1 {
+  font-size: 6vh;
+  font-weight: bolder;
+  color: #FFD700;
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 2vh;
+}
+.content h2 {
+    font-family: Arial, sans-serif;
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #FFFFFF;
+    background-color: #070242;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 4vh;
+}
+
+/* === HORIZONTAL NAVIGATION FOR SETTINGS === */
+.settings-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.settings-tab {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.settings-tab.active,
+.settings-tab:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.settings-content {
+  display: flex;
+  height: calc(100vh - 40vh);
+  overflow: hidden;
+  margin: 10px;
+}
+.vertical-menu {
+  width: 20%;
+  background: #ffffffb9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vertical-menu .menu-item {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.vertical-menu .menu-item:hover,
+.vertical-menu .menu-item.active {
+  background-color: #007BFF;
+  color: white;
+}
+.user-table-container {
+  flex-grow: 1;
+  background: #ffffffb9;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.user-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user-table-container th,
+.user-table-container td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+.user-table-container th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  padding: 2vh;
+
+}
+
+#searchEmail {
+  width: 400px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+#searchEmail:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+#filterRole {
+  width: 150px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+#filterRole:hover {
+  background: linear-gradient(to right, #0056b3, #003c80);
+}
+
+#filterRole:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+.modal-content input {
+  width: 80%;
+  padding: 1.5vh;
+  margin: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.modal-content button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal-content button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+.modal-content button[type="button"] {
+  background-color: #dc3545;
+  color: white;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+select {
+  width: 70%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: linear-gradient(to right, #f9f9f9, #e8e8e8);
+  border: 1px solid #ccc;
+  color: #333;
+  cursor: pointer;
+  appearance: none; 
+}
+
+.select-container::after {
+  content: "▼";
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  right: 8vh;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+select:hover,
+select:focus {
+  border-color: #007BFF;
+  outline: none;
+  background: linear-gradient(to right, #ffffff, #f0f0f0);
+}
+
+button {
+  font-size: 15px;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
+}
+
+button[type="submit"] {
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+}
+
+button[type="button"] {
+  background: linear-gradient(to right, #dc3545, #c82333);
+  color: white;
+}
+
+.user-table-container td:last-child {
+  text-align: right;
+  width: 90px; 
+  padding: 5px; 
+}
+
+.delete-btn {
+  width: 90px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: linear-gradient(to right, #dc3545, #c82333);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(to right, #c82333, #a71d2a);
+  transform: scale(1.05);
+}
+
+.create-btn {
+  width: 90px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.create-btn:hover {
+  background: linear-gradient(to right, #218838, #1e7e34);
+  transform: scale(1.05);
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="password"] {
+  width: 75%;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  background: #f9f9f9;
+  transition: 0.3s ease-in-out;
+  margin-bottom: 15px;
+}
+
+input[type="password"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Account Grid Layout */
+.account-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 3vh;
+  padding: 2vh;
+  align-items: stretch;
+  scale: 0.92;
+}
+.account-item {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 94%;
+}
+
+.change-password {
+  grid-row: span 2;
+}
+
+.reset-password,
+.logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reset-password button {
+  background: linear-gradient(to right, #ff9900, #ff6600);
+  color: white;
+  width: 100%;
+}
+
+.reset-password button:hover {
+  background: linear-gradient(to right, #ff6600, #ff3300);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logout button {
+  background: linear-gradient(to right, #ff4444, #cc0000);
+  color: white;
+  width: 100%;
+}
+
+.logout button:hover {
+  background: linear-gradient(to right, #cc0000, #990000);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reset-password h3,
+.logout h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.reset-password h3 {
+  color: #ff9900;
+}
+
+.logout h3 {
+  color: #cc0000;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Availability</title>
+    <link rel="stylesheet" href="AdminSettingsPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="school_logo">
+            <img src="/ROOM SCHEDULING IMAGES/granby_logo.png" class="Logo">
+        </div>
+        <aside class="sidebar">
+            
+            <div class="admin_nav">
+            <ul class="nav">
+                <a href="AdminDashboard.html">Dashboard</a>
+                <a href="AdminRoomPage.html">View Rooms</a>
+                <a href="AdminRequestPage.html">Room Requests</a>
+                <a href="AdminSettingsPage.html">Settings</a>
+            </ul>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="content-text">
+            <h1>Settings</h1> 
+            <h2>Admin</h2>
+            </div>
+        <div class="Settings-area">
+  <div class="settings-card">
+    <h3>User Management</h3>
+    <ul>
+      <li><a href="#add-new-user" id="addNewUser">Add New User</a></li>
+      <li><a href="#edit-user">Edit User Information</a></li>
+      <li><a href="#delete-user">Delete User</a></li>
+      <li><a href="#assign-roles">Assign Roles and Permissions</a></li>
+    </ul>
+  </div>
+
+  <div class="settings-card">
+    <h3>Room Management</h3>
+    <ul>
+      <li><a href="#add-new-room">Add New Room</a></li>
+      <li><a href="#edit-room">Edit Room Details</a></li>
+      <li><a href="#delete-room">Delete Room</a></li>
+      <li><a href="#manage-availability">Manage Room Availability</a></li>
+    </ul>
+  </div>
+
+  <div class="settings-card">
+    <h3>System Configuration</h3>
+    <ul>
+      <li><a href="#update-system">Update System Preferences</a></li>
+      <li><a href="#backup-data">Backup and Restore Data</a></li>
+      <li><a href="#manage-notifications">Manage Notifications</a></li>
+      <li><a href="#security-settings">Security Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="settings-card">
+    <h3>Support and Help</h3>
+    <ul>
+      <li><a href="#contact-support">Contact Support</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#user-guide">User Guide</a></li>
+      <li><a href="#feedback">Feedback and Suggestions</a></li>
+    </ul>
+  </div>
+</div> 
+  </div>
+           
+        </main>
+    </div>
+
+    <!-- User Creation Modal -->
+<div id="userModal" class="modal">
+    <div class="modal-content">
+        <h2>Create User</h2>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+
+            <button type="submit">Create User</button>
+            <button type="button" onclick="document.getElementById('userModal').style.display='none'">Cancel</button>
+        </form>
+    </div>
+</div>
+    <script src="data.js"></script>
+    <script src="AdminSettingsPage.js"></script>
+</body>
+</html>

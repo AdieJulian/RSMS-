@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Availability</title>
+    <link rel="stylesheet" href="AdminRoomPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="school_logo">
+            <img src="/ROOM SCHEDULING IMAGES/granby_logo.png" class="Logo">
+        </div>
+        <aside class="sidebar">
+            <div class="admin_nav">
+                <ul class="nav">
+                    <a href="AdminDashboard.html">Dashboard</a>
+                    <a href="AdminRoomPage.html">View Rooms</a>
+                    <a href="AdminRequestPage.html">Room Requests</a>
+                    <a href="AdminSettingsPage.html">Settings</a>
+                </ul>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="content-text">
+                <h1>ROOM AVAILABILITY</h1>
+                <h2>SY. 2024-2025</h2>
+            </div>
+            <div class="filter-container">
+                <label for="room-search">Search Room:</label>
+                    <input type="text" id="room-search" placeholder="Enter room number...">
+                <label for="day-filter">Day:</label>
+                <select id="day-filter">
+                    <option value="">All</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+                <label for="time-filter">Time:</label>
+                <select id="time-filter">
+                    <option value="">All</option>
+                    <option value="8:00 AM - 11:00 AM">8:00 AM - 11:00 AM</option>
+                    <option value="11:00 AM - 2:00 PM">11:00 AM - 2:00 PM</option>
+                    <option value="2:00 PM - 5:00 PM">2:00 PM - 5:00 PM</option>
+                </select>
+                <label for="availability-filter">Availability:</label>
+                <select id="availability-filter">
+                    <option value="">All</option>
+                    <option value="Occupied">Occupied</option>
+                    <option value="Vacant">Vacant</option>
+                </select>
+            </div>
+            <div class="room-table">
+                <table id="roomTable">
+                    <thead>
+                        <tr>
+                            <th>ROOM</th>
+                            <th>DAY</th>
+                            <th>TIME</th>
+                            <th>AVAILABILITY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <!-- Include shared data module first -->
+    <script src="data.js"></script>
+    <!-- Then include page-specific script -->
+    <script src="AdminRoomPage.js"></script>
+</body>
+</html>

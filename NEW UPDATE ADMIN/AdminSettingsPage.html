@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management</title>
+  <link rel="stylesheet" href="AdminSettingsPage.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="school_logo">
+      <img src="/ROOM SCHEDULING IMAGES/granby_logo.png" class="Logo" alt="Granby Logo">
+    </div>
+    <aside class="sidebar">
+      <div class="admin_nav">
+        <ul class="nav">
+          <li><a href="AdminDashboard.html">Dashboard</a></li>
+          <li><a href="AdminRoomPage.html">View Rooms</a></li>
+          <li><a href="AdminRequestPage.html">Room Requests</a></li>
+          <li><a href="AdminSettingsPage.html">Settings</a></li>
+        </ul>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="content-text">
+        <h1>Settings</h1>
+        <h2>Admin</h2>
+      </div>
+      <!-- Horizontal settings navigation -->
+      <div class="settings-nav">
+        <button class="settings-tab active" id="userManagementTab">User Management</button>
+        <button class="settings-tab" id="roomManagementTab">Room Management</button>
+        <button class="settings-tab" id="accountManagementTab">Account Management</button>
+      </div>
+      <!-- Content area for the selected Settings option -->
+      <div id="settingsContentContainer">
+        <!-- User Management Content -->
+        <div id="userManagementContent" class="settings-content">
+          <div class="user-table-container">
+            <!-- Search & Filter Controls -->
+            <div class="table-controls">
+              <input type="text" id="searchEmail" placeholder="Search email..." />
+              <select id="filterRole">
+                <option value="">All Roles</option>
+                <option value="Sub Admin">Sub Admin</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Student">Student</option>
+              </select>
+            </div>
+            <table id="userTable">
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>
+                    <button id="createUserBtn" class="create-btn">Create User</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- User rows will be populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Account Management Content -->
+        <!-- Account Management Content -->
+<div id="accountManagementContent" class="settings-content" style="display: none;">
+  <div class="account-grid">
+    <!-- Change Password Section (Spanning Two Rows) -->
+    <div id="changePasswordSection" class="account-item change-password">
+      <h3>Change Password</h3>
+      <form id="changePasswordForm">
+        <div class="input-group" >
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" placeholder="Enter current password" required>
+        </div>
+        <div class="input-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" placeholder="Enter new password" required>
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm New Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+        </div>
+        <button type="submit" class="update-btn">Update Password</button>
+      </form>
+    </div>
+
+    <!-- Reset Default Password (Upper Right) -->
+    <div id="resetPasswordSection" class="account-item reset-password">
+      <h3>Reset Default Password</h3>
+      <p>Restore admin password to default <strong>(GCSTPH)</strong>.</p>
+      <button id="resetDefaultBtn">Reset Password</button>
+    </div>
+
+    <!-- Logout Section (Bottom Right) -->
+    <div id="logoutSection" class="account-item logout">
+      <h3>Logout</h3>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </div>
+</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- User Creation Modal -->
+  <div id="userModal" class="modal">
+    <div class="modal-content">
+      <h2>Create User</h2>
+      <form id="createUserForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+        
+        <label for="role">Role:</label>
+        <div class="select-container">
+          <select id="role" required>
+            <option value="Sub Admin">Sub Admin</option>
+            <option value="Faculty Member">Faculty Member</option>
+          </select>
+        </div>
+        
+        <button type="submit">Create User</button>
+        <button type="button" onclick="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Include your data module -->
+  <script src="data.js"></script>
+  <!-- Settings page JavaScript -->
+  <script src="AdminSettingsPage.js"></script>
+</body>
+</html>

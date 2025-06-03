@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5ea4f5;
+}
+
+.container {
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #002147;
+    background-image: url(/ROOM\ SCHEDULING\ IMAGES/AdminSideBarBG.jpg);
+    background-size: cover;
+    padding: 20px;
+    height: 100vh;
+    color: white;
+}
+
+.Logo {
+    height: 28vh;
+    width: 33vh;
+    position: absolute;
+    left: 1.7%;
+    top: 3%;
+}
+
+.sidebar .nav {
+    list-style-type: none;
+    top: 30%;
+    padding: 0;
+    color: white;
+}
+
+.sidebar .nav a {
+    background-color: #6c757d;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar .nav a:hover{
+    background-color: rgba(58, 232, 255, 0.664);
+}
+
+.admin_nav {
+    position: relative;
+    top: 30vh;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: #5ea4f5;
+    height: 100% ;
+    min-height: 100vh;
+}
+.content-text{
+    display: flex;
+    justify-content: left;
+    background-color: #070242; 
+}
+.content h1 {
+    font-family: Arial, sans-serif;
+    font-size: 6vh;
+    font-weight: bolder;
+    color: #FFD700; 
+    text-align: center;
+    text-transform: uppercase;
+    padding-left: 2vh;
+}
+.content h2{
+    font-family: Arial, sans-serif;
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #FFFFFF;
+    background-color: #070242; 
+    padding: 10px;
+    border-radius: 5px; 
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 4vh;
+}
+.room-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    max-height: 72.4vh;
+    position: relative;
+}
+table {
+    display: block;
+    width: 80%;
+    height: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    border: 2px solid black;
+    overflow-y: auto;
+    max-height: 72.4vh;
+}
+
+th, td {
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #6c757d;
+    color: white;
+}
+
+th:nth-child(1), td:nth-child(1) { width: 25%; } /* Room */
+th:nth-child(2), td:nth-child(2) { width: 25%; } /* Day */
+th:nth-child(3), td:nth-child(3) { width: 35%; } /* Time */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* Availability */
+
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh; /* Less space between elements */
+    padding: 2vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    border-radius: 3px;
+    max-width: 100%; /* Limits width for a compact look */
+}
+
+.filter-container label {
+    font-size: 3vh; /* Reduce label size */
+    font-weight: bold;
+}
+
+.filter-container input,
+.filter-container select,
+.filter-container button {
+    padding: 6px;
+    font-size: 14px; /* Slightly smaller inputs */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.filter-container button:hover {
+    background-color: #0056b3;
+}

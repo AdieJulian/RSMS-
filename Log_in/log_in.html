@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login/Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h2 id="form-title">Login</h2>
+      <form onsubmit="return validateForm()" method="POST" action="#">
+        <div id="email-section">
+          <label>Email:</label>
+          <input type="email" id="email" placeholder="Enter email" required />
+          <div id="confirm-email-div" style="display:none;">
+            <label>Confirm Email:</label>
+            <input type="email" id="confirm-email" placeholder="Confirm email" />
+          </div>
+        </div>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+        <div id="confirm-password-div" style="display:none;">
+          <label>Confirm Password:</label>
+          <input type="password" id="confirm-password" placeholder="Confirm password" />
+        </div>
+
+        <button type="submit" id="submit-btn">Login</button>
+      </form>
+      <p id="toggle-text">Create Account? <a href="#" onclick="toggleForm()">Register</a></p>
+    </div>
+  </div>
+
+  <script>
+    let isRegister = false;
+
+    function toggleForm() {
+      isRegister = !isRegister;
+      document.getElementById('form-title').innerText = isRegister ? "Register" : "Login";
+      document.getElementById('submit-btn').innerText = isRegister ? "Register" : "Login";
+      document.getElementById('toggle-text').innerHTML = isRegister
+        ? 'Already have an account? <a href="#" onclick="toggleForm()">Login</a>'
+        : 'Create Account? <a href="#" onclick="toggleForm()">Register</a>';
+      
+      document.getElementById('confirm-password-div').style.display = isRegister ? "block" : "none";
+      document.getElementById('confirm-email-div').style.display = isRegister ? "block" : "none";
+    }
+
+    function validateForm() {
+      if (isRegister) {
+        const email = document.getElementById("email").value;
+        const confirmEmail = document.getElementById("confirm-email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (email !== confirmEmail) {
+          alert("Emails do not match!");
+          return false;
+        }
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

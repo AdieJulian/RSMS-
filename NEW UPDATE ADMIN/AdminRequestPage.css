@@ -1,0 +1,203 @@
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #5ea4f5;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: #002147;
+  background-image: url(/ROOM\ SCHEDULING\ IMAGES/AdminSideBarBG.jpg);
+  background-size: cover;
+  padding: 20px;
+  height: 100vh;
+  color: white;
+}
+
+.Logo {
+  height: 30vh;
+  width: 35vh;
+  position: absolute;
+  left: 3%;
+  top: 3%;
+}
+
+.sidebar .nav {
+  list-style-type: none;
+  top: 30%;
+  padding: 0;
+  color: white;
+}
+
+.sidebar .nav a {
+  background-color: #6c757d;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar .nav a:hover {
+  background-color: rgba(75, 75, 235, 0.664);
+}
+
+.admin_nav {
+  position: relative;
+  top: 30vh;
+}
+
+/* Force main content to be a column flex container with 100vh height */
+.content {
+  width: 80%;
+  background-color: #5ea4f5;
+  height: 100vh; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+}
+
+.content-text {
+  display: flex;
+  justify-content: left;
+  background-color: #070242;
+}
+
+.content h1 {
+  font-family: Arial, sans-serif;
+  font-size: 6vh;
+  font-weight: bolder;
+  color: #FFD700;
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 2vh;
+}
+
+.content h2 {
+  font-family: Arial, sans-serif;
+  font-size: 3vh;
+  font-weight: bolder;
+  color: #FFFFFF;
+  background-color: #070242;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 4vh;
+}
+
+/* Request Table Container – Takes up remaining height and enables vertical scroll */
+.request-table {
+  width: 100%;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;               /* Fills the remaining vertical space */
+  overflow-y: auto;      /* Adds scrollbar if content exceeds available space */
+  position: relative;
+}
+
+/* Modernized Table Styling */
+.request-table table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;      /* Ensures the border-radius applies uniformly */
+}
+
+.request-table thead {
+  background: #6c757d;
+}
+
+.request-table thead th {
+  padding: 12px 15px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.request-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.request-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.request-table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.request-table tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+.request-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.request-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Maintain Column Widths */
+.request-table th:nth-child(1),
+.request-table td:nth-child(1) { width: 15%; } /* Room */
+.request-table th:nth-child(2),
+.request-table td:nth-child(2) { width: 20%; } /* Day */
+.request-table th:nth-child(3),
+.request-table td:nth-child(3) { width: 30%; } /* Time Requested */
+.request-table th:nth-child(4),
+.request-table td:nth-child(4) { width: 20%; } /* Availability */
+.request-table th:nth-child(5),
+.request-table td:nth-child(5) { width: 15%; } /* Approve/Deny Actions */
+
+/* Button Styling */
+.approve-btn {
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.approve-btn:hover {
+  background: linear-gradient(to right, #218838, #1e7e34);
+  transform: scale(1.05);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.deny-btn {
+  background: linear-gradient(to right, #dc3545, #c82333);
+  color: white;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.deny-btn:hover {
+  background: linear-gradient(to right, #c82333, #a71d2a);
+  transform: scale(1.05);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}

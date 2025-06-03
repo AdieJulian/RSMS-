@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Login Form -->
+    <div class="form-box" id="login-form">
+      <form>
+        <label>Email:</label>
+        <input type="email" placeholder="Enter email" required />
+        <label>Password:</label>
+        <input type="password" placeholder="Enter password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Register Form -->
+    <div class="form-box" id="register-form" style="display:none;">
+      <form onsubmit="return validateForm()">
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter email" required />
+        <label>Confirm Email:</label>
+        <input type="email" id="confirm-email" placeholder="Confirm email" required />
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+        <label>Confirm Password:</label>
+        <input type="password" id="confirm-password" placeholder="Confirm password" required />
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <!-- Toggle Buttons at Bottom -->
+    <div class="toggle-buttons">
+      <button onclick="showForm('login')">Login</button>
+      <button onclick="showForm('register')">Register</button>
+    </div>
+
+  </div>
+
+  <script>
+    function showForm(form) {
+      document.getElementById('login-form').style.display = form === 'login' ? 'block' : 'none';
+      document.getElementById('register-form').style.display = form === 'register' ? 'block' : 'none';
+    }
+
+    function validateForm() {
+      const email = document.getElementById("email").value;
+      const confirmEmail = document.getElementById("confirm-email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      if (email !== confirmEmail) {
+        alert("Emails do not match!");
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

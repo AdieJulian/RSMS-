@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #5ea4f5;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #002147;
+    background-image: url(/ROOM\ SCHEDULING\ IMAGES/AdminSideBarBG.jpg);
+    background-size: cover;
+    padding: 20px;
+    height: 100vh;
+    color: white;
+}
+
+.Logo {
+    height: 30vh;
+    width: 35vh;
+    position: absolute;
+    left: 3%;
+    top: 3%;
+}
+
+.sidebar .nav {
+    list-style-type: none;
+    top: 30%;
+    padding: 0;
+    color: white;
+}
+
+.sidebar .nav a {
+    background-color: #6c757d;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar .nav a:hover{
+    background-color: rgba(75, 75, 235, 0.664);
+}
+
+.admin_nav {
+    position: relative;
+    top: 30vh;
+}
+
+.content {
+    width: 80%;
+    background-color: #5ea4f5;
+    height: 100% ;
+    min-height: 100vh;
+}
+.content-text{
+    display: flex;
+    justify-content: left;
+    background-color: #070242; 
+}
+.content h1 {
+    font-family: Arial, sans-serif;
+    font-size: 6vh;
+    font-weight: bolder;
+    color: #FFD700; 
+    text-align: center;
+    text-transform: uppercase;
+    padding-left: 2vh;
+}
+.content h2{
+    font-family: Arial, sans-serif;
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #FFFFFF;
+    background-color: #070242; 
+    padding: 10px;
+    border-radius: 5px; 
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 4vh;
+}
+.request-table {
+    width: 100%;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    max-height: 100vh;
+    position: relative;
+}
+table {
+    display: block;
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    border: 2px solid black;
+    overflow-y: auto;
+    max-height: 91.4vh;
+}
+
+th, td {
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #6c757d;
+    color: white;
+}
+
+th:nth-child(1), td:nth-child(1) { width: 15%; } /* Room */
+th:nth-child(2), td:nth-child(2) { width: 20%; } /* Day */
+th:nth-child(3), td:nth-child(3) { width: 30%; } /* Time */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* Availability */
+th:nth-child(5), td:nth-child(5) { width: 15%; } /* Actions */
+
+
+.approve-btn {
+    background: linear-gradient(to right, #28a745, #218838);
+    color: white;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.approve-btn:hover {
+    background: linear-gradient(to right, #218838, #1e7e34);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.deny-btn {
+    background: linear-gradient(to right, #dc3545, #c82333);
+    color: white;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.deny-btn:hover {
+    background: linear-gradient(to right, #c82333, #a71d2a);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+

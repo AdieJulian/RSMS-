@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Room Management</title>
+    <link rel="stylesheet" href="FacultyPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="granby_logo.png" alt="School Logo" class="Logo">
+            </div>
+            <nav class="faculty_nav">
+                <ul class="nav">
+                    <li>
+                        <a href="#" class="nav-link active" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                            <span class="notification-badge">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-section="rooms">
+                            <i class="fas fa-door-open"></i>
+                            Rooms
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-section="schedule">
+                            <i class="fas fa-calendar-alt"></i>
+                            Schedule
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-footer">
+                <a href="#" class="nav-link" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="breadcrumb">
+                    <span id="current-section">Dashboard</span>
+                </div>
+                <div class="header-actions">
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="toggleQuickActions()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="quick-actions-dropdown" id="quickActionsDropdown">
+                            <a href="#" onclick="viewSchedule()"><i class="fas fa-calendar"></i> View Schedule</a>
+                            <a href="#" onclick="reportIssue()"><i class="fas fa-exclamation-circle"></i> Report Issue</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Add the minimized logout button -->
+            <div class="logout-mini">
+                <button class="logout-btn" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="dashboard-grid">
+                    <!-- Overview Card -->
+                    <div class="dash-card">
+                        <div class="card-header">
+                            <h3>Overview</h3>
+                        </div>
+                        <div class="today-schedule">
+                            <h4>Today's Schedule</h4>
+                            <div class="schedule-item current">
+                                <div class="time-block">
+                                    <div class="time-indicator">
+                                <span class="time">10:00 AM - 11:30 AM</span>
+                                        <span class="status current">Current Class</span>
+                                    </div>
+                                    <div class="class-details">
+                                        <span class="subject">Web Development</span>
+                                        <span class="room"><i class="fas fa-door-open"></i> Room 310 (AVR)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Next Class</h4>
+                            <div class="schedule-item next">
+                                <div class="time-block">
+                                    <div class="time-indicator">
+                                <span class="time">1:00 PM - 2:30 PM</span>
+                                        <span class="status upcoming">Upcoming</span>
+                                    </div>
+                                    <div class="class-details">
+                                        <span class="subject">DSA</span>
+                                        <span class="room"><i class="fas fa-door-open"></i> Room 404</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Schedule Card -->
+                    <div class="dash-card">
+                        <div class="card-header">
+                            <h3>My Schedule</h3>
+                        </div>
+                        <div class="schedule-controls">
+                            <div class="schedule-tabs">
+                                <button class="tab active" data-view="day">Day</button>
+                                <button class="tab" data-view="week">Week</button>
+                                <button class="tab" data-view="month">Month</button>
+                            </div>
+                        </div>
+                        <div class="schedule-content">
+                            <div class="schedule-view day-view active">
+                                <div class="schedule-item">
+                                    <div class="time-block">
+                                        <div class="time-indicator">
+                                <span class="time">8:00 AM - 9:30 AM</span>
+                                        </div>
+                                        <div class="class-details">
+                                <span class="subject">Information Management</span>
+                                            <span class="room"><i class="fas fa-door-open"></i> Room 309</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-view week-view">
+                                <!-- Week view content will be dynamically loaded -->
+                            </div>
+                            <div class="schedule-view month-view">
+                                <!-- Month view content will be dynamically loaded -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Booking Card -->
+                    <div class="dash-card">
+                        <div class="card-header">
+                            <h3>Room Booking</h3>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="booking-btn" onclick="openRoomRequestModal()">
+                                <i class="fas fa-plus"></i>
+                                Request/Reserve Room
+                            </button>
+                            <button class="booking-btn" onclick="openAvailabilityModal()">
+                                <i class="fas fa-search"></i>
+                                Check Availability
+                            </button>
+                            <button class="booking-btn" onclick="openRoomFeaturesModal()">
+                                <i class="fas fa-info-circle"></i>
+                                View Room Features
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rooms Section -->
+            <section id="rooms" class="section">
+                <div class="rooms-container">
+                    <div class="rooms-header">
+                        <div class="rooms-controls">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="roomSearch" placeholder="Search rooms...">
+                            </div>
+                            <div class="filter-box">
+                                <select id="availabilityFilter">
+                                    <option value="all">All Rooms</option>
+                                    <option value="available">Available Only</option>
+                                    <option value="occupied">Occupied Only</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rooms-content">
+                        <div class="room-availability-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Room Name/Number</th>
+                                        <th>Status</th>
+                                        <th>Time Slot</th>
+                                        <th>Date</th>
+                                        <th>Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="roomTableBody">
+                                    <!-- Table content will be dynamically populated -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="rooms-list">
+                            <div class="floor-section">
+                                <h2>3rd Floor</h2>
+                                <div class="room-cards">
+                                    <div class="room-card" data-room="310">
+                                        <h3>Room 310 (AVR)</h3>
+                                        <div class="status-indicator available"></div>
+                                    </div>
+                                    <div class="room-card" data-room="309">
+                                        <h3>Room 309</h3>
+                                        <div class="status-indicator occupied"></div>
+                                        </div>
+                                    <div class="room-card" data-room="303">
+                                        <h3>Room 303</h3>
+                                        <div class="status-indicator available"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="floor-section">
+                                <h2>4th Floor</h2>
+                                <div class="room-cards">
+                                    <div class="room-card" data-room="404">
+                                        <h3>Room 404</h3>
+                                        <div class="status-indicator available"></div>
+                                </div>
+                                    <div class="room-card" data-room="405">
+                                        <h3>Room 405</h3>
+                                        <div class="status-indicator occupied"></div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <div class="schedule-container">
+                    <div class="schedule-header">
+                        <div class="schedule-controls">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="scheduleSearch" placeholder="Search schedule...">
+                            </div>
+                            <div class="filter-box">
+                                <select id="scheduleFilter">
+                                    <option value="all">All Classes</option>
+                                    <option value="upcoming">Upcoming Classes</option>
+                                    <option value="past">Past Classes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Upload Panel -->
+                    <div class="schedule-upload-panel">
+                        <div class="upload-section">
+                            <h3>Upload Schedule</h3>
+                            <form id="scheduleUploadForm" onsubmit="handleScheduleUpload(event)">
+                                <div class="form-group">
+                                    <label for="scheduleTitle">Schedule Title/Label</label>
+                                    <input type="text" id="scheduleTitle" placeholder="e.g., My Class Schedule – June 2025" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="scheduleTerm">Select Term</label>
+                                    <select id="scheduleTerm" required>
+                                        <option value="">Choose a term...</option>
+                                        <option value="1st">1st Semester</option>
+                                        <option value="2nd">2nd Semester</option>
+                                        <option value="summer">Summer</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="scheduleYear">Academic Year</label>
+                                    <input type="text" id="scheduleYear" placeholder="e.g., 2025" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="scheduleFile">Upload Schedule Image</label>
+                                    <div class="file-upload-container">
+                                        <input type="file" id="scheduleFile" accept=".jpg,.jpeg,.png,.pdf" required>
+                                        <div class="file-upload-info">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <p>Drag & drop your file here or click to browse</p>
+                                            <span>Supported formats: JPEG, PNG, PDF</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="organizationMethod">Organization Method</label>
+                                    <div class="organization-options">
+                                        <label class="radio-option">
+                                            <input type="radio" name="organizationMethod" value="auto" checked>
+                                            <span>Auto-organize by Faculty Name & Term</span>
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="organizationMethod" value="manual">
+                                            <span>Manual Folder Organization</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="manualFolderGroup" style="display: none;">
+                                    <label for="manualFolder">Custom Folder Name</label>
+                                    <input type="text" id="manualFolder" placeholder="Enter custom folder name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="scheduleNotes">Notes or Remarks (Optional)</label>
+                                    <textarea id="scheduleNotes" rows="3" placeholder="Add any additional notes about this schedule"></textarea>
+                                </div>
+
+                                <div class="upload-actions">
+                                    <button type="submit" class="upload-btn">
+                                        <i class="fas fa-upload"></i>
+                                        Upload Schedule
+                                    </button>
+                                    <button type="reset" class="reset-btn">
+                                        <i class="fas fa-undo"></i>
+                                        Reset Form
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="uploaded-schedules">
+                            <h3>Uploaded Schedules</h3>
+                            <div class="schedules-list" id="uploadedSchedulesList">
+                                <!-- Uploaded schedules will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-content">
+                        <div class="schedule-view">
+                            <div class="schedule-item">
+                                <div class="time-block">
+                                    <div class="time-indicator">
+                                        <span class="time">8:00 AM - 9:30 AM</span>
+                                    </div>
+                                    <div class="class-details">
+                                        <span class="subject">Information Management</span>
+                                        <span class="room"><i class="fas fa-door-open"></i> Room 309</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="settings-container">
+                    <div class="settings-header">
+                        <h2>Settings</h2>
+                        <p>Manage your account preferences and notifications</p>
+                    </div>
+
+                    <div class="settings-content">
+                        <!-- Profile Settings -->
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3><i class="fas fa-user"></i> Profile Settings</h3>
+                            </div>
+                            <div class="settings-card-body">
+                                <form id="profileSettingsForm" class="settings-form">
+                                    <div class="form-group">
+                                        <label for="displayName">Display Name</label>
+                                        <input type="text" id="displayName" name="displayName" value="John Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" value="john.doe@example.com">
+                                    </div>
+                                    <div class="password-section">
+                                        <h4>Change Password</h4>
+                                        <div class="form-group">
+                                            <label for="currentPassword">Current Password</label>
+                                            <input type="password" id="currentPassword" name="currentPassword">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newPassword">New Password</label>
+                                            <input type="password" id="newPassword" name="newPassword">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirmPassword">Confirm New Password</label>
+                                            <input type="password" id="confirmPassword" name="confirmPassword">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">
+                                            <i class="fas fa-save"></i> Save Profile Changes
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Notification Preferences -->
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
+                            </div>
+                            <div class="settings-card-body">
+                                <form id="notificationSettingsForm" class="settings-form">
+                                    <div class="notification-options">
+                                        <div class="notification-option">
+                                            <div class="option-header">
+                                                <h4>Room Requests</h4>
+                                                <p>Receive notifications about room request updates</p>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" name="roomRequestNotifications" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-option">
+                                            <div class="option-header">
+                                                <h4>Schedule Updates</h4>
+                                                <p>Receive notifications about changes to your schedule</p>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" name="scheduleUpdateNotifications" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">
+                                            <i class="fas fa-save"></i> Save Notification Preferences
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Room Request Modal -->
+    <div id="roomRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request/Reserve Room</h2>
+                <button class="close-btn" onclick="closeModal('roomRequestModal')">&times;</button>
+            </div>
+            <form id="roomRequestForm" onsubmit="handleRoomRequest(event)">
+                <div class="form-group">
+                    <label for="requestRoom">Select Room</label>
+                    <select id="requestRoom" required>
+                        <option value="">Select a room...</option>
+                        <option value="310">Room 310 (AVR)</option>
+                        <option value="309">Room 309</option>
+                        <option value="303">Room 303</option>
+                        <option value="404">Room 404</option>
+                        <option value="405">Room 405</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="requestDate">Date</label>
+                    <input type="date" id="requestDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="requestTimeStart">Start Time</label>
+                    <input type="time" id="requestTimeStart" required>
+                </div>
+                <div class="form-group">
+                    <label for="requestTimeEnd">End Time</label>
+                    <input type="time" id="requestTimeEnd" required>
+                </div>
+                <div class="form-group">
+                    <label for="requestPurpose">Purpose</label>
+                    <textarea id="requestPurpose" rows="3" required></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal('roomRequestModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Check Availability Modal -->
+    <div id="availabilityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Check Room Availability</h2>
+                <button class="close-btn" onclick="closeModal('availabilityModal')">&times;</button>
+            </div>
+            <div class="availability-search">
+                <div class="form-group">
+                    <label for="availabilityDate">Date</label>
+                    <input type="date" id="availabilityDate" onchange="checkRoomAvailability()">
+                </div>
+                <div class="availability-results">
+                    <div class="room-timeline">
+                        <!-- Timeline will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Features Modal -->
+    <div id="roomFeaturesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Room Features</h2>
+                <button class="close-btn" onclick="closeModal('roomFeaturesModal')">&times;</button>
+            </div>
+            <div class="room-features">
+                <div class="room-feature-tabs">
+                    <button class="feature-tab active" data-room="310">Room 310 (AVR)</button>
+                    <button class="feature-tab" data-room="309">Room 309</button>
+                    <button class="feature-tab" data-room="303">Room 303</button>
+                    <button class="feature-tab" data-room="404">Room 404</button>
+                    <button class="feature-tab" data-room="405">Room 405</button>
+                </div>
+                <div class="room-feature-content">
+                    <!-- Features will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <!-- Add main JavaScript file -->
+    <script src="FacultyPage.js"></script>
+</body>
+</html>
